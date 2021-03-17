@@ -1,0 +1,43 @@
+html,body,ol,il,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select,ul,figure,figcaption{
+    padding:0;
+    margin:0;
+}
+
+body,html{
+    font: 14px "微软雅黑",Arial;
+}
+h1,h2,h3,h4,h5,h6,strong,b{
+    font-weight: normal;
+    font-size: 100%;
+}
+i,em{
+    font-style: normal;
+}
+a{
+    text-decoration: none;
+    color: #007dff;
+}
+li{
+    list-style: none;
+}
+input{
+    outline: none;
+    border: none;
+}
+img{
+    vertical-align:middle;
+}
+.clearfix{
+    *zoom: 1;
+}
+.clearfix::after{
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.container{
+    margin: 0 auto;
+    width: 1262px;
+}
