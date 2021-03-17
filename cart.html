@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/cart.css">
+</head>
+<body>
+  <nav id="nav">
+    <div class="inner_nav container">
+            <div class="nav_l"><a href="./1.html">首页</a></div>
+            <div class="nav_r">
+                <ul>
+                    <li><a href="./login.html">登陆</a> </li>
+                    <li><a href="./register.html">注册</a></li>
+                </ul>
+            </div>
+    </div>
+</nav>
+
+
+<div class="container cart">
+
+      <table>
+          <thead>
+              <tr>
+                  <th>全选<input type="checkbox" name="selectAll"></th>
+                  <th>商品图片</th>
+                  <th>商品名称</th>
+                  <th>商品单价</th>
+                  <th>商品数量</th>
+                  <th>商品小计</th>
+                  <th>操作</th>
+              </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+              <tr>
+                  <td>全选<input type="checkbox" name="selectAll"></td>
+                  <td colspan="2">商品总数量：<span class="totalnum">0</span>件</td>
+                  <td colspan="3">商品总价：￥<span class="totalprice">0</span>元</td>
+                  <td><a href="" class="btn btn-success">结算</a></td>
+              </tr>
+          </tfoot>
+      </table>
+ 
+</div>
+
+
+<script src="./node_modules/jquery/dist/jquery.js"></script>
+<script src="./node_modules/_layui-layer@1.0.9@layui-layer/dist/layer.js"></script>
+<script src="./js/tools.js"></script>
+<script src="./js/cart.js"></script>
+</body>
+</html>

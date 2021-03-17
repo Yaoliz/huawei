@@ -20,25 +20,61 @@ if(username){
         })
         return false;
     })
+
+    
+
+
+
+
+
+  
 }
+ 
+
+
+
 
 
 var arr = location.search.match(/id=(\d+)/)
-if(!arr){
-    layer.msg('非法访问',{
-        icon:2,
-        time:2000
-    },function(){
-        location.href = "../1.html"
+    if(!arr){
+        layer.msg('非法访问',{
+            icon:2,
+            time:2000
+        },function(){
+            location.href = "../1.html"
+        })
+    }
+    // console.log(arr);
+    var id = arr[1]
+$.ajax({
+        url:'../php/history.php',
+        data:{
+            username,
+            goodsid:id,
+        },
+        method:"post" 
     })
-}
-console.log(arr);
-var id = arr[1]
+    
+    $.ajax({
+        url:'../php/gethistory.php',
+        data:{username},
+        dataType:"json",
+        success:res=>{
+            var {data} = res;
+            data = data.sort(function(a,b){
+                return b.Id - a.Id
+            }).slice(0,3)
+            console.log(data);
 
 
-var loadindex = layer.load(2,{
-    shade:[1,'#fff']
-})
+   }
+}) 
+
+
+
+    var loadindex = layer.load(2,{
+        shade:[1,'#fff']
+    })
 
 // 获取数据
 $.ajax({
@@ -46,9 +82,8 @@ $.ajax({
     data:{id},
     dataType:"json",
     success:res=>{
-        layer.close(loadindex)  
+        
         var {data} = res;
-          console.log(data);
         var smallImg = data.img
         $('.small>img').attr('src',smallImg)
         $('.middle>img').attr('src',smallImg)
@@ -56,7 +91,7 @@ $.ajax({
         $('h2').html("商品名称"+data.name)
         $('.info p span').html("价格"+data.price)
       $('.jieshao').html(`${data.introduce}`)
-        // console.log(data.introduce);
+        layer.close(loadindex)
         enlarge()
     }
 })
@@ -98,12 +133,65 @@ function enlarge(){
 })
 }
 
-console.log($('.bottom_main .center p span'));
+// console.log($('.bottom_main .center p span'));
 
   $('.bottom_main .center p span').click(function(){
       // console.log( $(this).addClass('.av').siblings().removeClass('.av').parent().next().children().eq($(this).index()));
       // console.log(1);
       $(this).addClass('av').siblings().removeClass('av').parent().next().children().eq($(this).index()).addClass('av').siblings().removeClass('  av')
   })
+
+
+
+
+  $('.add').click(function(){
+    if(!username){
+        layer.msg('请先登录',{
+            icon:2,
+            time:1500
+        },function(){
+            localStorage.setItem('url',location.href)
+            location.href = "login.html"
+        })
+        return false;
+    }
+    var str = localStorage.getItem('cartData')
+    if(str){
+        var arr = JSON.parse(str)
+
+        console.log(arr);
+        var data = arr.find(item=>item.username === username && item.id === id)
+        if(data){
+            // 找到这个数据了
+            data.number++
+            localStorage.setItem('cartData',JSON.stringify(arr))
+        }else{
+            var obj = {
+                id,
+                number:1,
+                username
+            }
+            arr.push(obj)
+            localStorage.setItem('cartData',JSON.stringify(arr))
+        }
+    }else{
+        // 购物车中没有数据
+        var obj = {
+            id,
+            number:1,
+            username
+        }
+        var arr = [];
+        arr.push(obj)
+        localStorage.setItem('cartData',JSON.stringify(arr))
+    }
+    
+    layer.msg('购物车添加成功，请移步购物车结算',{
+        icon:1,
+        time:1500
+    })
+    
+    return false;
+})
 
 

@@ -37,7 +37,18 @@ $('.login_bot').click(function(){
                   // 存cookie
               tool.setCookie('remusername',$('input[name="username"]').val(),3600*24*7)
 
-              location.href = "../1.html"
+
+              var url = localStorage.getItem('url')
+              if(url){
+                  // 清空本地存储中的url 
+                  location.href = url
+                  localStorage.removeItem('url')
+                 
+              }else{
+                 location.href = "../1.html"
+              }
+
+             
               
           })
       }else{

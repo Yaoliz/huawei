@@ -84,6 +84,7 @@ $.ajax({
     success:res=>{
         var {data}=res
         var str = '';
+        // console.log(data);
         data.forEach(item => {
             str +=`
             <div> <a href="../detail.html?id=${item.id} "> <img src="${item.img}" alt=""></a> <a href="../detail.html?id=${item.id}">
@@ -91,6 +92,7 @@ $.ajax({
            </a></div>
             `
         });
+        
         $('.f1').html(str)
 
     }

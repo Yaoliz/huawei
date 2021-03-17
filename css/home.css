@@ -30,13 +30,19 @@
   display: flex;
 }
 
-#header > a {
+#header >a:first-child {
   display: block;
   width: 240px;
   height: 64px;
   margin-top: 10px;
   background: url(../images/index/2.png) no-repeat;
   background-size: 240px 54px;
+}
+
+#header >a:last-child {
+  font-size: 14px;
+  line-height: 74px;
+  color: #ccc;
 }
 
 #header ul {
