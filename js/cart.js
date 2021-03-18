@@ -36,7 +36,7 @@ var cccindex = layer.load(2,{
 var str = localStorage.getItem('cartData')
 // 判断是否有数据
 if(str){
-    // 转成数组
+    
     var arr = JSON.parse(str)
     // 筛选出属于当前用户的数据
     arr = arr.filter(item=>item.username === username)
@@ -96,9 +96,9 @@ if(str){
 function empty(){
     $('.cart').html(`
         <div class="jumbotron">
-            <h1>购物车空空如也!</h1>
-            <p>想要快速获取数据，请移步列表页挑选商品！</p>
-            <p><a class="" href="list.html" role="button">去列表页</a></p>
+            <h1>车就算了 购物车怎么能空的 !</h1>
+            <p>不如去采购些许 感受购物快感</p>
+            <p><a class="" href="../1.html" role="button">去首页</a></p>
         </div>
     `)
 }

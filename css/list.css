@@ -43,8 +43,10 @@ body,html{
   width: 200px;
   height: 300px;
   margin: 20px;
+  background: #f1f1f1;
   border: #fff 1px solid;
   border-radius: 10px;
+  box-shadow: #fff 1px 1px 1px;
   overflow: hidden;
 }
 .l1 .l2 img{
@@ -52,3 +54,30 @@ body,html{
   width: 200px;
 }
 
+.page{
+  position: fixed;;
+  bottom: 0;
+  background: #f4f4f4;
+  left: 50%;
+  transform: translateX(-50%);
+}
+h3{
+  width: 200px;
+  display: -webkit-box;
+           -webkit-box-orient: vertical;
+           -webkit-line-clamp: 3;
+           overflow: hidden;
+          }
+
+
+p{
+  color: #ff4d00;
+  font-weight: 800;
+}
+
+
+/* @media only screen and (min-width: 990px) {
+  body {
+      background-color: lightblue;
+  }
+} */

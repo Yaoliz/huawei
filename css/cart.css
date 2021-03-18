@@ -94,3 +94,15 @@ table td{
   border-radius: 5px;
   
 }
+.btn-success{
+  color: #ccc;
+  font-size: 16px;
+  background: #f00;
+}
+
+
+.jumbotron{
+  font-size: 50px;
+  color: #ff4d00;
+  font-weight: 800px;
+}

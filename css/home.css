@@ -161,21 +161,30 @@
 
 .show > div {
   text-align: center;
-  width: 280px;
+  width: 250px;
   height: 250px;
-  border-radius: 5%;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: #ccc 5px 5px 5px;
+  box-shadow: #f4f4f4 2px 2px 2px;
 }
 
 .show > div img {
-  width: 290px;
+  width: 250px;
   height: 200px;
 }
 
 .show > div img:hover {
   transition: all 0.5s;
   transform: scale(1.05);
+}
+.show > div a{
+    
+overflow:hidden; 
+text-overflow:ellipsis;
+/* text-overflow: ellipsis; */
+overflow: hidden;
+flex-wrap: nowrap;
+    color: rgb(83, 83, 83);
 }
 
 .show > div span {
@@ -233,3 +242,7 @@ h2 {
   border-radius: 5px;
   border: 1px solid #fff;
 }
+body{
+  background: #fff;
+}
+

@@ -45,7 +45,18 @@ function getData(cat){
             var {data} = res;
             if(data.length){
                 // 给数据做分页显示
-                var pageSize = 21;
+                // var pageSize =18
+                // $(window).resize(function(){   
+                    // console.log($(window).width());
+                    // console.log(1);        //当浏览器大小变化时
+                          //浏览器时下窗口可视区域高度
+                          if( $(window).width()>960&&$(window).width()<1500){
+                            var  pageSize = 20;
+                        }else{
+                            var pageSize = 18;
+                        }
+            //    });
+              
                 new Page('page',{},{
                     total:data.length,pageSize
                 },function(currentPage){
@@ -60,7 +71,7 @@ function getData(cat){
                                     <img src="${item.img}">
                                     <div class="caption">
                                     <h3>${item.name}</h3>
-                                    <p>${item.price}</p>
+                                    <p>￥${item.price}</p>
                                     <p><a href="detail.html?id=${item.id}" role="button">立即购买</a></p>
                                     </div>
                                 </div>
@@ -70,6 +81,8 @@ function getData(cat){
                     $('.more').html(str)
                     layer.close(loadindex)
                 })
+
+                
             }else{
                 layer.close(loadindex)
                 $('.goods').html(`
@@ -82,4 +95,8 @@ function getData(cat){
             }
         }
     })
+
+
+
+    
 }
