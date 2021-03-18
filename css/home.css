@@ -203,9 +203,14 @@ flex-wrap: nowrap;
   line-height: 50px;
 }
 
-h2 {
+h1{
   font-size: 24px;
   font-weight: 800;
+  color: #888;
+}
+h1>span{
+  font-size: 14px;
+  color: #ccc;
 }
 
 .nav_r ul {
@@ -245,12 +250,16 @@ h2 {
 }
 
 .floor li {
-  width: 30px;
-  height: 20px;
-  background: #ccc;
-  color: #444;
+  width: 40px;
+  height: 40px;
+  background: rgb(78, 76, 76);
+  box-shadow: #ccc 1px 1px 1px;
+  color: #fff;
+  text-align: center;
+  line-height:  40px;
   border-radius: 5px;
   border: 1px solid #fff;
+  user-select: none;
 }
 html{
   width: 100%;

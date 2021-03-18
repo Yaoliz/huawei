@@ -105,3 +105,15 @@ button{
     border: none;
     border-radius: 5px;
 }
+html{
+    width: 100%;
+  }
+  body{
+    width: 100%;
+    background: #fff;
+  }
+  
+  footer img{
+   /* height: 300px; */
+   width: 100%;
+  }
