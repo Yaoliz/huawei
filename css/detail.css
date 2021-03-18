@@ -132,7 +132,7 @@
    width: 200px;
    height: 600px;
  }
- .bottom_main .hot{
+ .bottom_main .right{
    width: 200px;
    height: 600px;
  }
@@ -191,6 +191,17 @@
    height: 200px;
  }
 
+ .bottom_main .hot{
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  width: 200px;
+  height:200px;
+  border-radius: 10px;
+}
+.bottom_main .hot img{
+  width: 200px;
+  height: 200px;
+}
 
  html{
   width: 100%;
@@ -203,4 +214,12 @@ body{
 footer img{
  /* height: 300px; */
  width: 100%;
+}
+h5{
+  font-size: 25px;
+  color: #ff4d00;
+}
+.hot{
+  border: #ccc 1px solid;
+  height: 200px;
 }

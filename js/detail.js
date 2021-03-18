@@ -20,18 +20,7 @@ if(username){
         })
         return false;
     })
-
-    
-
-
-
-
-
-  
 }
- 
-
-
 
 
 
@@ -55,6 +44,14 @@ $.ajax({
         method:"post" 
     })
     
+$.ajax({
+        url:'../php/hot.php',
+        data:{
+            goodsid:id,
+        },
+        method:"get" 
+    })
+    
     $.ajax({
         url:'../php/gethistory.php',
         data:{username},
@@ -64,12 +61,159 @@ $.ajax({
             data = data.sort(function(a,b){
                 return b.Id - a.Id
             }).slice(0,3)
-            console.log(data);
+            var str=[]
+            // console.log(data);
+            data.forEach(item => {
+                str.push(item.goodsid)
+            });
+            // console.log(str);
+            $.ajax({
+                url:"../php/hisget.php",
+                dataType:'json',
+                data:{pid:str[0]},
+                success:res=>{
+                    var {data}=res
+                    var str = '';
+                    // console.log(data);
+                    data.forEach(item => {
+                        str +=`
+                        <div> <a href="../detail.html?id=${item.id} "> <img src="${item.img}" alt=""></a> <a href="../detail.html?id=${item.id}">
+                      
+                       </a></div>
+                        `
+                    });
+                    
+                    $('.h1').html(str)
+            
+                }
+            })
+            $.ajax({
+                url:"../php/hisget.php",
+                dataType:'json',
+                data:{pid:str[1]},
+                success:res=>{
+                    var {data}=res
+                    var str = '';
+                    // console.log(data);
+                    data.forEach(item => {
+                        str +=`
+                        <div> <a href="../detail.html?id=${item.id} "> <img src="${item.img}" alt=""></a> <a href="../detail.html?id=${item.id}">
+                        
+                       </a></div>
+                        `
+                    });
+                    
+                    $('.h2').html(str)
+            
+                }
+            })
+            $.ajax({
+                url:"../php/hisget.php",
+                dataType:'json',
+                data:{pid:str[2]},
+                success:res=>{
+                    var {data}=res
+                    var str = '';
+                    // console.log(data);
+                    data.forEach(item => {
+                        str +=`
+                        <div> <a href="../detail.html?id=${item.id} "> <img src="${item.img}" alt=""></a> <a href="../detail.html?id=${item.id}">
+                        
+                       </a></div>
+                        `
+                    });
+                    
+                    $('.h3').html(str)
+            
+                }
+            })
 
 
+            
    }
 }) 
 
+$.ajax({
+    url:'../php/list.php',
+    data:{cat:'all'},
+    dataType:"json",
+    success(res){
+        var {data} = res;
+        data = data.sort(function(a,b){
+            return b.hot_mumber- a.hot_mumber
+        }).slice(0,3)
+        var str=[]
+        console.log(data);
+        data.forEach(item => {
+            str.push(item.hot_mumber)
+        });
+        // console.log(str);
+        $.ajax({
+            url:"../php/hisget.php",
+            dataType:'json',
+            data:{pid:str[0]},
+            success:res=>{
+                var {data}=res
+                var str = '';
+                // console.log(data);
+                data.forEach(item => {
+                    str +=`
+                    <div> <a href="../detail.html?id=${item.id} "> <img src="${item.img}" alt=""></a> <a href="../detail.html?id=${item.id}">
+                  
+                   </a></div>
+                    `
+                });
+                
+                $('.t1').html(str)
+        
+            }
+        })
+        $.ajax({
+            url:"../php/hisget.php",
+            dataType:'json',
+            data:{pid:str[1]},
+            success:res=>{
+                var {data}=res
+                var str = '';
+                // console.log(data);
+                data.forEach(item => {
+                    str +=`
+                    <div> <a href="../detail.html?id=${item.id} "> <img src="${item.img}" alt=""></a> <a href="../detail.html?id=${item.id}">
+                    
+                   </a></div>
+                    `
+                });
+                
+                $('.t2').html(str)
+        
+            }
+        })
+        $.ajax({
+            url:"../php/hisget.php",
+            dataType:'json',
+            data:{pid:str[2]},
+            success:res=>{
+                var {data}=res
+                var str = '';
+                // console.log(data);
+                data.forEach(item => {
+                    str +=`
+                    <div> <a href="../detail.html?id=${item.id} "> <img src="${item.img}" alt=""></a> <a href="../detail.html?id=${item.id}">
+                    
+                   </a></div>
+                    `
+                });
+                
+                $('.t3').html(str)
+        
+            }
+        })
+
+
+
+
+    }
+})
 
 
     var loadindex = layer.load(2,{
@@ -195,3 +339,49 @@ function enlarge(){
 })
 
 
+$('.success').click(function(){
+    if(!username){
+        layer.msg('请先登录',{
+            icon:2,
+            time:1500
+        },function(){
+            localStorage.setItem('url',location.href)
+            location.href = "../login.html"
+        })
+        return false;
+    }
+    var str = localStorage.getItem('cartData')
+    if(str){
+        var arr = JSON.parse(str)
+
+        console.log(arr);
+        var data = arr.find(item=>item.username === username && item.id === id)
+        if(data){
+            // 找到这个数据了
+            data.number++
+            localStorage.setItem('cartData',JSON.stringify(arr))
+        }else{
+            var obj = {
+                id,
+                number:1,
+                username
+            }
+            arr.push(obj)
+            localStorage.setItem('cartData',JSON.stringify(arr))
+        }
+    }else{
+        // 购物车中没有数据
+        var obj = {
+            id,
+            number:1,
+            username
+        }
+        var arr = [];
+        arr.push(obj)
+        localStorage.setItem('cartData',JSON.stringify(arr))
+    }
+    
+    location.href = "../cart.html"
+
+    
+})
