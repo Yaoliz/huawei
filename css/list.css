@@ -4,6 +4,7 @@
 }
 
 #nav .inner_nav {
+  line-height: 38px;
   display: flex;
   height: 38px;
   justify-content: space-between;
@@ -27,6 +28,11 @@
   display: flex;
   color: #fff;
 }
+#nav a{
+  color: #888;
+  font-size: 16px;
+  font-weight: 700;
+ }
 body,html{
   width: 100%;
   height: 100%;

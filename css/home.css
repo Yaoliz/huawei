@@ -9,6 +9,7 @@
 }
 
 #nav .inner_nav {
+  line-height: 38px;
   display: flex;
   height: 38px;
   justify-content: space-between;
@@ -25,7 +26,11 @@
   display: flex;
   width: 480px;
 }
-
+#nav a{
+ color: #888;
+ font-size: 16px;
+ font-weight: 700;
+}
 #header {
   display: flex;
 }
@@ -39,12 +44,17 @@
   background-size: 240px 54px;
 }
 
-#header >a:last-child {
+#header>a{
   font-size: 14px;
   line-height: 74px;
   color: #ccc;
 }
-
+/* #header>a:nth-child(2) {
+  font-size: 14px;
+  line-height: 74px;
+  color: #ccc;
+}
+ */
 #header ul {
   display: flex;
   width: 540px;
@@ -242,7 +252,15 @@ h2 {
   border-radius: 5px;
   border: 1px solid #fff;
 }
+html{
+  width: 100%;
+}
 body{
+  width: 100%;
   background: #fff;
 }
 
+footer img{
+ /* height: 300px; */
+ width: 100%;
+}
